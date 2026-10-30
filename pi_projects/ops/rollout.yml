@@ -1,0 +1,20 @@
+# pi_projects/ops/rollout.yml
+- hosts: pi_canary          # then pi_wave1, pi_all
+  become: true
+  vars:
+    model: "qwen2.5:1.5b"
+  tasks:
+    - name: Pull the approved model
+      ansible.builtin.command: ollama pull {{ model }}
+      changed_when: false
+    - name: Point the assistant at the approved model
+      ansible.builtin.lineinfile:
+        path: /opt/aikit/.env
+        regexp: '^AIKIT_CHAT_MODEL='
+        line: 'AIKIT_CHAT_MODEL={{ model }}'
+      notify: restart assistant
+  handlers:
+    - name: restart assistant
+      ansible.builtin.systemd:
+        name: voice-assistant
+        state: restarted

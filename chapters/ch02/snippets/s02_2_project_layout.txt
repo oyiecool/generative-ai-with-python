@@ -1,0 +1,14 @@
+aikit/
+├── pyproject.toml        # dependencies and tool settings
+├── uv.lock               # exact resolved versions (commit this)
+├── .env.example          # documented settings, no secrets (commit this)
+├── .env                  # your real secrets (never commit)
+├── .gitignore
+├── src/aikit/
+│   ├── __init__.py
+│   ├── settings.py       # typed configuration
+│   ├── llm.py            # provider-agnostic client (Chapter 4)
+│   └── ...
+├── chapters/ch02/ ...    # runnable chapter scripts
+├── data/                 # sample documents and datasets
+└── tests/                # pytest suites, including prompt tests (Chapter 14)

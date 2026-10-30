@@ -1,0 +1,10 @@
+RUNBOOK: Model provider outage — Policy Assistant (AI-0007)
+Trigger: error rate > 20% for 5 min with provider 5xx/529 errors, or provider status page incident.
+Decision owner: on-call platform engineer; inform the service owner.
+1. Confirm: check the provider status page and our error dashboard (error type = provider).
+2. Fail over: set MODEL_ROUTE=fallback in the gateway config (pre-approved standard change).
+3. Verify: run `aikit eval --set smoke` against the fallback (10 cases, must pass 9).
+4. Communicate: banner in the app — "Answers may be slower or less detailed".
+5. Monitor: every 30 min check the provider; fail back after 1 hour of clean status.
+6. Record: incident ticket with timeline, cost delta and any quality complaints.
+Do not: switch to an unevaluated model, or disable logging to save latency.

@@ -1,0 +1,11 @@
+How the Policy Assistant uses your information
+What it does: answers questions about IT policies using only our approved policy documents.
+What we process: your question, your staff ID and your department (to show only policies you
+are allowed to see). We do not use your questions to train AI models.
+Who processes it: our IT team and [provider], which processes questions on our behalf under a
+contract that prohibits training on our data.
+How long: questions are kept for 30 days for troubleshooting, then deleted. Anonymous counts
+are kept for reporting.
+AI limits: answers may be wrong. Always check the linked policy before acting.
+Your choices: you can ask a person instead at the IT service desk, and you can request access to
+or deletion of your records through privacy@company.example.

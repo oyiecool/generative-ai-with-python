@@ -1,0 +1,1 @@
+{"messages": [{"role": "system", "content": "You write CAB change summaries."}, {"role": "user", "content": "<change_request>Upgrade OpenSSL on 14 web servers...</change_request>"}, {"role": "assistant", "content": "**Summary**\nUpgrade OpenSSL on 14 production web servers...\n**Risk**\nMedium...\n**Rollback**\nReinstall the previous package version from the local mirror..."}]}

@@ -1,0 +1,17 @@
+# /etc/systemd/system/voice-assistant.service
+[Unit]
+Description=Offline voice assistant
+After=sound.target ollama.service
+
+[Service]
+User=assistant
+WorkingDirectory=/opt/aikit
+ExecStart=/opt/aikit/.venv/bin/python pi_projects/voice/assistant.py
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/dev/shm
+SupplementaryGroups=audio gpio
+
+[Install]
+WantedBy=multi-user.target

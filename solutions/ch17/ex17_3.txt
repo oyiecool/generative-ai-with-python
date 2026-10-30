@@ -1,0 +1,11 @@
+AI Tools Acceptable Use — Infrastructure Team (v1.0)
+1. Approved tools: [list]. Request others through the service desk; do not sign up personally.
+2. Never enter: credentials, keys, customer personal data, unreleased vulnerability details,
+   or confidential source code into any tool not approved for that data class.
+3. You remain responsible for anything you submit, send or deploy that AI helped produce.
+   Verify commands, configuration and facts before use; never run generated commands on
+   production without review.
+4. Disclose AI assistance when sharing work externally or when a reviewer asks.
+5. Report wrong, harmful or surprising outputs to the AI governance lead.
+6. Breaches are handled under the information security policy.
+Owner: AI governance lead. Review: every 6 months.

@@ -1,0 +1,9 @@
+Decision: Use RAG over the HR policy collection with a mid-tier hosted model. Do not fine-tune.
+Context: Policies change several times a year; answers must cite the current version;
+         access differs between managers and staff.
+Options considered:
+  - Prompting only: fails, the model does not know our policies.
+  - Fine-tuning: stores facts that go stale; no citations; no per-user access control.
+  - RAG: current, citable, filterable by permission.  ← chosen
+Consequences: Need an ingestion pipeline and document owners; revisit fine-tuning only if
+              response style or cost becomes a problem at scale.
