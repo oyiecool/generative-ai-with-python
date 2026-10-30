@@ -2,16 +2,23 @@
 name: llm-eval
 on:
   pull_request:
-    paths: ["prompts/**", "src/aikit/**", "evals/**", "uv.lock"]
+    paths: ["prompts/**", "src/aikit/**", "evals/**", "tests/**", "uv.lock"]
 jobs:
   eval:
     runs-on: ubuntu-latest
+    env:
+      HAS_EVAL_KEY: ${{ secrets.EVAL_ANTHROPIC_KEY != '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --frozen
       - run: uv run pytest -m "not llm"                       # fast unit tests
-      - run: uv run python -m aikit.evalrun --set evals/policy_assistant.yaml --out report.json
+      # The model evaluation runs once the Chapter 14 project (src/aikit/evalrun.py) exists
+      # and the EVAL_ANTHROPIC_KEY repository secret is set; until then these steps are skipped.
+      - id: evalrun
+        if: env.HAS_EVAL_KEY == 'true' && hashFiles('src/aikit/evalrun.py') != ''
+        run: uv run python -m aikit.evalrun --set evals/policy_assistant.yaml --out report.json
         env:
           ANTHROPIC_API_KEY: ${{ secrets.EVAL_ANTHROPIC_KEY }}   # separate key with a spend cap
-      - run: uv run python -m aikit.evalgate report.json --min-pass 0.92 --max-security-fail 0
+      - if: steps.evalrun.outcome == 'success'
+        run: uv run python -m aikit.evalgate report.json --min-pass 0.92 --max-security-fail 0
