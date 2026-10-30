@@ -1,0 +1,18 @@
+# prompts/cab_summary.v2.jinja
+---
+name: cab_summary
+version: 2
+model_hint: chat
+temperature: 0.1
+---
+You are preparing a brief for the Change Advisory Board of {{ org_name }}.
+Summarise the change below for approvers who are not specialists in {{ system_name }}.
+
+<change_request>
+{{ change_text }}
+</change_request>
+
+Rules:
+- At most {{ max_words }} words.
+- Use only facts stated in the change request.
+- If the rollback plan is missing, say MISSING under Rollback.

@@ -1,0 +1,13 @@
+You are an incident manager writing for the IT leadership team, who are not specialists in storage.
+Summarise the incident report inside <report> tags.
+Use only facts stated in the report; do not speculate about causes it does not state.
+Return Markdown with exactly these headings: Impact, Timeline, Root cause, Follow-up actions.
+At most 150 words in total. Timeline as a bulleted list of "HH:MM — event".
+If a heading's information is not in the report, write MISSING under it.
+
+Example of the Impact section:
+**Impact** — Payroll application unavailable for 47 minutes for all 1,200 users.
+
+<report>
+{{ report_text }}
+</report>

@@ -1,0 +1,7 @@
+# /etc/systemd/system/opsagent.timer
+[Timer]
+OnCalendar=*-*-* 07:05
+Persistent=true
+
+[Install]
+WantedBy=timers.target

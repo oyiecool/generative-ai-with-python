@@ -1,0 +1,23 @@
+- id: AI-0012
+  name: Patch Advisory Summariser
+  purpose: Summarise vendor security advisories for the remediation team
+  business_owner: Head of Vulnerability Management
+  technical_owner: Remediation Engineering Lead
+  tier: medium
+  data_categories: [internal, public]
+  models: [{provider: anthropic, model: "<pinned id>", hosting: hosted-api, data_terms: "enterprise; no training"}]
+  human_oversight: Engineers verify CVE IDs and affected versions against the vendor advisory
+  pia_reference: null
+  next_review: 2027-04-30
+  status: live
+- id: AI-0013
+  name: Meeting transcription (purchased SaaS)
+  purpose: Transcribe and summarise internal meetings
+  tier: medium
+  data_categories: [internal, personal]
+  models: [{provider: vendor, model: "undisclosed", hosting: hosted-api, data_terms: "see DPA v3"}]
+  pia_reference: PIA-2026-021
+  ...
+- id: AI-0014
+  name: Service desk ticket auto-categorisation (feature of ITSM platform)
+  ...

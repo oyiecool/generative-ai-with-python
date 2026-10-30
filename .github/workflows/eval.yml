@@ -1,0 +1,17 @@
+# .github/workflows/eval.yml
+name: llm-eval
+on:
+  pull_request:
+    paths: ["prompts/**", "src/aikit/**", "evals/**", "uv.lock"]
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --frozen
+      - run: uv run pytest -m "not llm"                       # fast unit tests
+      - run: uv run python -m aikit.evalrun --set evals/policy_assistant.yaml --out report.json
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.EVAL_ANTHROPIC_KEY }}   # separate key with a spend cap
+      - run: uv run python -m aikit.evalgate report.json --min-pass 0.92 --max-security-fail 0

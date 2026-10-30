@@ -1,0 +1,19 @@
+# governance/register/AI-0007.yaml
+id: AI-0007
+name: IT Policy Assistant
+purpose: Answer staff questions about IT policies with citations
+business_owner: Head of IT Service Management
+technical_owner: Platform Engineering Lead
+tier: medium
+users: All staff (~1,200)
+affected_people: Staff asking questions; no decisions about individuals
+data_categories: [internal, personal]
+models:
+  - {provider: anthropic, model: "<pinned model id>", hosting: hosted-api,
+     data_terms: "enterprise terms; no training on inputs"}
+tools_with_side_effects: []
+human_oversight: Answers are advisory; citations link to source; feedback reviewed weekly
+pia_reference: PIA-2026-014
+last_evaluation: 2026-10-20
+next_review: 2027-04-20
+status: live

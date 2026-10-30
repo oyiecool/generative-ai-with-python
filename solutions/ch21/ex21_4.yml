@@ -1,0 +1,19 @@
+id: AI-0031
+name: Server cupboard camera monitor
+purpose: Describe unexpected changes in the server cupboard outside working hours
+business_owner: Facilities Manager
+technical_owner: Infrastructure Lead
+tier: medium
+justification: Captures images that may include people (personal data) but makes no decisions
+  about individuals; outputs are reviewed by staff; no identification.
+physical_locations: [Building A, level 2 server cupboard]
+sensors: [Camera Module 3, field of view limited to rack area]
+data_stored_on_device: Event descriptions (30 days); images deleted after 7 days
+models: [{name: moondream, sha256: "<hash>", hosting: local}]
+connectivity: Heartbeat to internal collector only
+physical_notice: Sign on cupboard door
+human_oversight: Facilities reviews events each morning
+pia_reference: PIA-2026-034
+next_review: 2027-04-30
+decommissioning: Wipe SSD, revoke heartbeat token, update register
+status: live
